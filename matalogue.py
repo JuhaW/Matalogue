@@ -264,6 +264,7 @@ class MatalogueMaterials(bpy.types.Panel):
 
         col = layout.column(align=True)
 
+
         for mat in materials:
             name = mat.name
             try:
