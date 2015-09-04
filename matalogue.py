@@ -30,6 +30,7 @@ bl_info = {
 
 import bpy
 
+
 '''
 TODOs:
     Option to list only visible layers
