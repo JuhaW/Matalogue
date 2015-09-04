@@ -187,7 +187,7 @@ class TLGoToLight(bpy.types.Operator):
     world = bpy.props.BoolProperty(default = False)
 
     def execute(self, context):
-        print ("Light1=",self.light)
+        #print ("Light1=",self.light)
         dummy_object(delete=True)
         scene = context.scene
         context.space_data.tree_type = 'VRayNodeTreeLight'
@@ -198,7 +198,7 @@ class TLGoToLight(bpy.types.Operator):
             context.space_data.shader_type = 'OBJECT'
             light = bpy.data.objects[self.light]
             scene.objects.active = light
-            print ("Light2=",light)
+            #print ("Light2=",light)
 
         return {'FINISHED'}
 
@@ -211,7 +211,7 @@ class TLGoToObject(bpy.types.Operator):
     world = bpy.props.BoolProperty(default = False)
 
     def execute(self, context):
-        print ("self",self.obj)
+        #print ("self",self.obj)
         dummy_object(delete=True)
         scene = context.scene
         context.space_data.tree_type = 'VRayNodeTreeObject'
@@ -221,8 +221,8 @@ class TLGoToObject(bpy.types.Operator):
             context.space_data.shader_type = 'OBJECT'
             obj = bpy.data.objects[self.obj]
             scene.objects.active = obj
-            print ("self",self)
-            print ("self.world",self.world)
+            #print ("self",self)
+            #print ("self.world",self.world)
 
         return {'FINISHED'}
 
@@ -264,7 +264,6 @@ class MatalogueMaterials(bpy.types.Panel):
 
         col = layout.column(align=True)
 
-
         for mat in materials:
             name = mat.name
             try:
@@ -275,7 +274,7 @@ class MatalogueMaterials(bpy.types.Panel):
             if mat.users:
                 op = col.operator('matalogue.goto_mat', text=name, emboss=(mat==context.space_data.id), icon_value=icon_val)
                 #op = col.operator('matalogue.goto_mat', text=name,  icon_value=icon_val)
-                print ("mat =",mat)
+                #print ("mat =",mat)
                 op.mat = name
             else:
                 row = col.row(align=True)
@@ -374,7 +373,7 @@ class MatalogueCompositing(bpy.types.Panel):
 
         for sc in scenes:
             name = sc.name
-            op = col.operator('matalogue.goto_comp', text=name, emboss=(sc==context.space_data.id), icon='SCENE_DATA')
+            op = col.operator('matalogue.goto_comp', text=name, emboss=(sc==context.space_data.id), icon='RENDERLAYERS')
             op.scene = name
 
 
